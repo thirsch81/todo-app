@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/mustache.js"></script>
+<script src="http://cdn.sockjs.org/sockjs-0.2.1.min.js"></script>
+<script src="js/vertxbus.js"></script>
+</head>
+<body data-spy="scroll">
+	<div class="container">
+		<div class="page-header">
+			<h1>vert.x load test</h1>
+		</div>
+		<div class="row-fluid">
+			<div class="span4 well">
+				<h3>Loadtest cluster</h3>
+				<h5 class="row-fluid">
+					<div class="span8">Connection status:</div>
+					<div class="span4">
+						<span id="connection-status" class="text-error">Disconnected</span>
+					</div>
+				</h5>
+				<h5 class="row-fluid">
+					<div class="span8">Deployed Clients:</div>
+					<div class="span4">
+						<span id="number-deployed-clients">0</span>
+					</div>
+				</h5>
+				<div class="form-horizontal">
+					<input id="deploy-clients-input" type="number" maxlength="32" value="1" class="span8"/>
+					<button id="deploy-clients-btn" type="button" class="btn">Deploy</button>
+				</div>
+				<div class="span12"></div>
+				<h5>Target host</h5>
+				<div class="form-horizontal">
+					<input name="target-host-input" id="target-host-input" type="text" placeholder="www.target.com" class="span8" />
+					<button id="target-host-btn" type="button" class="btn">Set target</button>
+				</div>
+				<div class="span12"></div>
+				<h5>Arrival rate</h5>
+				<div class="form-horizontal">
+					<input id="arrival-rate-input" type="number" maxlength="32" value="1" min="0" class="span8"/>
+					<button id="arrival-rate-btn" type="button" class="btn">Set hits/s</button>
+				</div>
+				<div class="span12"></div>
+				<div class="span12"></div>
+				<div class="row-fluid">
+					<h5>Messages</h5>
+					<textarea id="message-log" rows="20" readOnly="readonly" class="span12 message-log"></textarea>
+				</div>
+			</div>
+			<div class="span4 well">
+				<h3>Target system</h3>
+
+			</div>
+			<div class="span4 well">
+				<h3>Cluster JVM stats</h3>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>total hits</td>
+							<td>hits / s</td>
+							<td>average response time</td>
+							<td>last response</td>
+						</tr>
+						<tr>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+vertx run start.groovy -cp build/classes

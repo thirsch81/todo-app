@@ -1,0 +1,29 @@
+apply plugin: "groovy"
+apply plugin: "eclipse"
+
+ext {
+	vertxHome = System.env["VERTX_HOME"]
+}
+
+if(!vertxHome) {
+	throw new Exception("VERTX_HOME is not set!")
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+	compile files(fileTree("${vertxHome}/lib/"))
+	//compile files(fileTree("lib"))
+	runtime files(fileTree("${vertxHome}/conf") { include "*.properties" } )
+}
+
+sourceSets {
+	main {
+		groovy {  srcDir "src" }
+		output.classesDir = "${buildDir}/classes"
+	}
+}
+
+eclipse { classpath { defaultOutputDir = file("${buildDir}/classes") } }
+
+task wrapper(type: Wrapper) { gradleVersion = "1.6" }
